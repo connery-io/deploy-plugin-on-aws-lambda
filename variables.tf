@@ -8,11 +8,6 @@ variable "plugin_version" {
   type        = string
 }
 
-variable "region" {
-  description = "AWS region"
-  type        = string
-}
-
 variable "memory_size" {
   description = "Memory size"
   type        = number

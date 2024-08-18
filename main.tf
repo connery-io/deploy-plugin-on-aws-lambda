@@ -10,7 +10,7 @@ terraform {
 }
 
 provider "aws" {
-  region = var.region
+  # No region specified here, will use AWS_REGION environment variable
 }
 
 # Parameters
