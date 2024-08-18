@@ -33,5 +33,5 @@ variable "timeout" {
 variable "resource_name_prefix" {
   description = "Resource name prefix"
   type        = string
-  default     = "connery-plugin_"
+  default     = "connery-plugin"
 }

@@ -13,13 +13,19 @@ provider "aws" {
   region = var.region
 }
 
+# Parameters
+
+data "aws_ssm_parameter" "api_key" {
+  name = "/${var.resource_name_prefix}/${var.plugin_name}/${var.plugin_version}/api-key"
+}
+
 # Lambda
 
 module "aws_lambda" {
   source  = "terraform-aws-modules/lambda/aws"
   version = "~> 7.7"
 
-  function_name                     = "${var.resource_name_prefix}${var.plugin_name}_${var.plugin_version}"
+  function_name                     = "${var.resource_name_prefix}_${var.plugin_name}_${var.plugin_version}"
   handler                           = "dist/index.default"
   runtime                           = "nodejs20.x"
   publish                           = true
@@ -29,7 +35,7 @@ module "aws_lambda" {
 
   environment_variables = {
     HOSTING_MODE = "AWS_LAMBDA"
-    API_KEY      = var.api_key
+    API_KEY      = data.aws_ssm_parameter.api_key.value
   }
 
   source_path = [
@@ -69,7 +75,7 @@ module "api_gateway" {
   source  = "terraform-aws-modules/apigateway-v2/aws"
   version = "~> 5.1"
 
-  name               = "${var.resource_name_prefix}${var.plugin_name}_${var.plugin_version}"
+  name               = "${var.resource_name_prefix}_${var.plugin_name}_${var.plugin_version}"
   protocol_type      = "HTTP"
   create_domain_name = false
 
