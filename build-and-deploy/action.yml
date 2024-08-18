@@ -14,7 +14,7 @@ inputs:
     type: string
     required: true
   backend-config:
-    description: Terraform backend configuration (e.g. backend.hcl)
+    description: Terraform backend config file name in the infrastructure directory (e.g. backend.hcl)
     type: string
     required: false
 
