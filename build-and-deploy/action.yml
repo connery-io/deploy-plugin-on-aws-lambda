@@ -22,12 +22,14 @@ runs:
   using: "composite"
   steps:
     - name: Checkout repository
-        uses: actions/checkout@v4
+      uses: actions/checkout@v4
 
     - name: Install dependencies
+      shell: bash
       run: npm install
 
     - name: Build
+      shell: bash
       run: npm run build
 
     - name: Configure AWS credentials
@@ -41,6 +43,7 @@ runs:
       uses: hashicorp/setup-terraform@v3
 
     - name: Initialize Terraform
+      shell: bash
       run: |
         if [ -n "${{ inputs.backend-config }}" ]; then
           terraform -chdir=infrastructure init -backend-config=${{ inputs.backend-config }}
@@ -49,11 +52,13 @@ runs:
         fi
 
     - name: Validate Terraform
+      shell: bash
       run: terraform -chdir=infrastructure validate
 
     - name: Plan Terraform
+      shell: bash
       run: terraform -chdir=infrastructure plan
 
     - name: Apply Terraform
+      shell: bash
       run: terraform -chdir=infrastructure apply -auto-approve
-
