@@ -9,9 +9,7 @@ terraform {
   }
 }
 
-provider "aws" {
-  # No region specified here, will use AWS_REGION environment variable
-}
+# NOTE: AWS provider uses AWS_REGION environment variable to determine region
 
 # Parameters
 
