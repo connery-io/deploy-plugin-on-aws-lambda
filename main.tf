@@ -29,6 +29,9 @@ module "aws_lambda" {
   timeout                           = var.timeout
   cloudwatch_logs_retention_in_days = 7
 
+  attach_policy_statements = var.attach_policy_statements
+  policy_statements        = var.policy_statements
+
   environment_variables = {
     HOSTING_MODE = "AWS_LAMBDA"
     API_KEY      = data.aws_ssm_parameter.api_key.value
