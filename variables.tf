@@ -8,11 +8,6 @@ variable "plugin_version" {
   type        = string
 }
 
-variable "api_key" {
-  description = "API key"
-  type        = string
-}
-
 variable "region" {
   description = "AWS region"
   type        = string
