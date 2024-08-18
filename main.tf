@@ -9,6 +9,10 @@ terraform {
   }
 }
 
+provider "aws" {
+  region = var.region
+}
+
 # Lambda
 
 module "aws_lambda" {
