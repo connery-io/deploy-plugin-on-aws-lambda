@@ -36,17 +36,17 @@ module "aws_lambda" {
 
   source_path = [
     {
-      path             = "${path.cwd}/../dist",
+      path             = "${path.cwd}/dist",
       prefix_in_zip    = "dist",
       npm_requirements = false
     },
     {
-      path             = "${path.cwd}/../node_modules",
+      path             = "${path.cwd}/node_modules",
       prefix_in_zip    = "node_modules",
       npm_requirements = false
     },
     {
-      path             = "${path.cwd}/../package.json",
+      path             = "${path.cwd}/package.json",
       prefix_in_zip    = "",
       npm_requirements = false
     }
