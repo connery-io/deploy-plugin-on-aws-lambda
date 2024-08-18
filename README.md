@@ -11,8 +11,8 @@ A Terraform module to deploy Connery plugins on AWS Lambda.
 3. Create `./infrastructure/main.tf` in the root of your plugin repository with the following content:
 
 ```hcl
-module "plugin-on-aws-lambda" {
-  source = "github.com/connery-io/plugin-on-aws-lambda?ref=v0.0.3"
+module "deploy-plugin-on-aws-lambda" {
+  source = "github.com/connery-io/deploy-plugin-on-aws-lambda?ref=v0.0.3"
 
   plugin_name    = "your-plugin-name"
   plugin_version = "v1"
