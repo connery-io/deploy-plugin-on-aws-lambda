@@ -1,6 +1,6 @@
 # deploy-plugin-on-aws-lambda
 
-A Terraform module to deploy Connery plugins on AWS Lambda.
+A Terraform module and GitHub Actions to deploy Connery plugins on AWS Lambda.
 
 ## Usage
 
