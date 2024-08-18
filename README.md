@@ -12,7 +12,7 @@ A Terraform module to deploy Connery plugins on AWS Lambda.
 
 ```hcl
 module "plugin-on-aws-lambda" {
-  source = "github.com/connery-io/plugin-on-aws-lambda?ref=v0.0.2"
+  source = "github.com/connery-io/plugin-on-aws-lambda?ref=v0.0.3"
 
   plugin_name    = "your-plugin-name"
   plugin_version = "v1"
@@ -37,9 +37,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: connery-io/deploy-plugin-on-aws-lambda/run-tests@main
+      - uses: connery-io/deploy-plugin-on-aws-lambda/run-tests@v0.0.3
 
-      - uses: connery-io/deploy-plugin-on-aws-lambda/build-and-deploy@main
+      - uses: connery-io/deploy-plugin-on-aws-lambda/build-and-deploy@v0.0.3
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
