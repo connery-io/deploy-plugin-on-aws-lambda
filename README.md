@@ -25,10 +25,10 @@ module "deploy-plugin-on-aws-lambda" {
 name: Deploy
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 concurrency:
   group: deploy
@@ -37,8 +37,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: connery-io/deploy-plugin-on-aws-lambda/run-tests@v0.1.0
-
       - uses: connery-io/deploy-plugin-on-aws-lambda/build-and-deploy@v0.1.0
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
