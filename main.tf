@@ -32,10 +32,17 @@ module "aws_lambda" {
   attach_policy_statements = var.attach_policy_statements
   policy_statements        = var.policy_statements
 
-  environment_variables = {
-    HOSTING_MODE = "AWS_LAMBDA"
-    API_KEY      = data.aws_ssm_parameter.api_key.value
-  }
+  attach_network_policy = var.attach_network_policy
+  vpc_security_group_ids = var.vpc_security_group_ids
+  vpc_subnet_ids         = var.vpc_subnet_ids
+
+  environment_variables = merge(
+    {
+      HOSTING_MODE = "AWS_LAMBDA"
+      API_KEY      = data.aws_ssm_parameter.api_key.value
+    },
+    var.environment_variables
+  )
 
   source_path = [
     {
