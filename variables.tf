@@ -38,6 +38,12 @@ variable "policy_statements" {
 
 # VPC deployment
 
+variable "attach_network_policy" {
+  description = "Controls whether VPC/network policy should be added to IAM role for Lambda Function"
+  type        = bool
+  default     = false
+}
+
 variable "vpc_security_group_ids" {
   description = "List of security group ids when Lambda Function should run in the VPC."
   type        = list(string)
